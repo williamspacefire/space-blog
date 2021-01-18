@@ -1,5 +1,5 @@
-import { AppBar, Toolbar, Typography } from '@material-ui/core'
-import Head from 'next/head'
+import  { AppBar, Toolbar, Typography }  from '@material-ui/core'
+import  Head                             from 'next/head'
 
 function Header(props) {
     return (
