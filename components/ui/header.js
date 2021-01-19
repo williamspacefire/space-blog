@@ -1,5 +1,6 @@
 import  { AppBar, Toolbar, Typography }  from '@material-ui/core'
 import  Head                             from 'next/head'
+import  Link                             from 'next/link'
 
 function Header(props) {
     return (
@@ -15,7 +16,9 @@ function Header(props) {
             </Head>
             <AppBar position="fixed" style={{backgroundColor:"white", color:"black"}}>
                 <Toolbar>
-                    <Typography>Compilado;</Typography>
+                    <Typography variant="h6">
+                        <Link href="/home">Compilado;</Link>
+                    </Typography>
                 </Toolbar>
             </AppBar>
             <Toolbar/>
