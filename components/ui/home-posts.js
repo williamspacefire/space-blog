@@ -1,5 +1,5 @@
-import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, Grid, IconButton, Paper, Typography } from "@material-ui/core";
-import { Favorite, Share } from "@material-ui/icons";
+import { Card, CardActions, CardContent, CardMedia, Grid, IconButton, Typography } from "@material-ui/core";
+import { Favorite, Share } from "@material-ui/icons"
 import { indexStyle } from "../style";
 
 function HomePosts() {

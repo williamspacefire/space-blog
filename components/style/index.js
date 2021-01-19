@@ -19,5 +19,11 @@ module.exports.indexStyle = makeStyles({
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
+    },
+    headerMessage: {
+        padding: "30px",
+        margin: 0,
+        backgroundColor: "#F44336",
+        color: "white",
     }
 })
