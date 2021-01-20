@@ -1,4 +1,4 @@
-import  { Avatar, Container, Grid, Paper, Typography }       from "@material-ui/core"
+import  { Chip, Container, Grid, Typography }       from "@material-ui/core"
 import  { indexStyle }                      from "../components/style/index"
 import  Header                              from "../components/ui/header"
 import  Image                               from 'next/image'
@@ -11,24 +11,27 @@ function index() {
     return (
         <>
             <Header/>
-            <Paper className={classes.headerMessage}>
-                <Grid container direction="row" justify="flex-start" spacing={2}>
-                    <Grid item>
-                        <Image src="/certificado-ssl-800x400-1.png" width={400} height={250}/>
-                    </Grid>
-                    <Grid item xs>
-                        <Typography variant="overline">
-                            Post em destaque
-                        </Typography>
-                        <Typography variant="h4">
-                          Certificado SSL Gratuito com Let’s Encrypt/Certbot
-                        </Typography>
-                        <Typography>
-                            Desde que foi anunciado que os principais navegadores da Web iriam mostrar páginas usando protocolo HTTP como inseguras, começou uma corrida para implementar certificados SSL nos sites. Se você tem um site que é acessado pelo protocolo HTTP, será mostrada uma mensagem de site inseguro aos seus usuários...
-                        </Typography>
-                    </Grid>
-                </Grid>
-            </Paper>
+                <Container className={classes.features}>
+                    <Grid container xl justify="center" spacing={2}>
+                        <Grid item>
+                            <div className={classes.featured}>
+                                <Image className={classes.feature_image} src="/12.jpg" width={770} height={482} priority={true}/>
+                                <div className={classes.featured_info}>
+                                    <div className={classes.cloudtags}>
+                                        <Chip size="small" color="secondary" label="AUTOMAÇÃO" className={classes.chip_tags}/>
+                                        <Chip size="small" color="secondary" label="SSL" className={classes.chip_tags}/>
+                                        <Chip size="small" color="secondary" label="TUTORIAL" className={classes.chip_tags}/>
+                                        <Chip size="small" color="secondary" label="DISCORD" className={classes.chip_tags}/>
+                                        <Chip size="small" color="secondary" label="BOT" className={classes.chip_tags}/>
+                                    </div>
+                                    <Typography variant="h4">
+                                        Criando um Bot para o Discord com Node.js – Parte 1
+                                    </Typography>
+                                </div>
+                            </div>
+                        </Grid>
+                    </Grid>                    
+                </Container>
             <HomePosts/>
         </>
     )
