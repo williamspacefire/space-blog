@@ -17,7 +17,7 @@ function Header(props) {
             <AppBar position="fixed" style={{backgroundColor:"white", color:"black"}}>
                 <Toolbar>
                     <Typography variant="h6">
-                        <Link href="/home">Compilado;</Link>
+                        <Link href="/">Compilado;</Link>
                     </Typography>
                 </Toolbar>
             </AppBar>
