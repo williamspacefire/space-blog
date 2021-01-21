@@ -18,6 +18,8 @@ module.exports.indexStyle = makeStyles({
     featured: {
         maxWidth: "770px",
         Height: "482px",
+        minHeight: 271,
+        minWidth: 417,
         position: "relative",
         color: "white",
         borderRadius: "8px",
@@ -25,12 +27,13 @@ module.exports.indexStyle = makeStyles({
         boxShadow: "0 0px 4px 0px #a5a5a5"
     },
     featured_info: {
-        padding: "0 32px 32px",
+        padding: "32px 32px 32px",
         bottom: 0,
         position: "absolute",
         zIndex: 2,
-        boxShadow: "inset 10px -95px 71px -36px #000",
-        borderRadius: "8px"
+        boxShadow: "inset 0px -22px 216px -5px #000",
+        borderRadius: "0 0 8px 8px",
+        backgroundColor: "rgb(0 0 0 / 40%)"
     },
     cloudtags: {
         
