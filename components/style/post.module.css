@@ -1,0 +1,58 @@
+.cover {
+    height: 570px;
+    background-color: #06f;
+    color: white;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.36);
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: -8px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    margin-bottom: 32px;
+}
+
+.cover::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.36);
+}
+
+h1.post_title {
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.post_info {
+    max-width: 650px;
+    line-height: 1.5;
+    z-index: 1;
+    position: relative;
+}
+
+.post_author, .post_tags, h1.post_title, .post_tags .post_time {
+    margin: 20px;
+}
+
+.post_info .chip_tags {
+    margin: 5px;
+}
+
+.post_content {
+    max-width: 800px;
+}
+
+.post_container {
+    justify-content: center;
+    position: relative;
+    display: flex;
+}
