@@ -56,3 +56,9 @@ h1.post_title {
     position: relative;
     display: flex;
 }
+
+@media (max-width: 854px) {
+    .post_content, .post_content img {
+        max-width: 100%;
+    }    
+}

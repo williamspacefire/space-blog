@@ -6,9 +6,11 @@ const { default: Header } = require("../components/ui/header");
 //const markdown = require('markdown').markdown
 const remarkHtml = require('remark-html')
 const remark = require('remark') 
+const rmParse = require('remark-parse')
+const unified = require('unified')
 
 async function mdToHtml(content) {
-    const html = await remark().use(remarkHtml, {sanitize: false}).process(content)
+    const html = await unified().use(remarkHtml, {sanitize: false}).use(rmParse, {sanitize: false}).process(content)
     return html.toString()
 }
 
@@ -73,7 +75,7 @@ function post(props) {
                 </Box>
                 <Container className={classes.post_container} style={{display: "flex"}}>
                     {(content) ? (
-                        <Typography className={classes.post_content} dangerouslySetInnerHTML={{__html: html}}></Typography>
+                        <div className={classes.post_content} dangerouslySetInnerHTML={{__html: html}}></div>
                     ) : ("")}
                 </Container>
             <Copyright/>
