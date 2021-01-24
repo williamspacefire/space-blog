@@ -35,7 +35,7 @@ function HomePosts() {
                                 image="https://i0.wp.com/blog.meycup.com/wp-content/uploads/2020/09/12.jpg?resize=770%2C480&ssl="
                                 title="Criando um Bot para o Discord com Node.js – Parte 1" />
                             <CardContent>
-                                <Link href="/post">
+                                <Link href="/criando-um-bot-para-o-discord-com-node-js-parte-1">
                                     <Typography variant="h5">
                                         Criando um Bot para o Discord com Node.js – Parte 1
                                     </Typography>
