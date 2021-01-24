@@ -3,7 +3,14 @@ import classes from "../components/style/post.module.css"
 const { Container, Typography, Box, Chip, Avatar } = require("@material-ui/core");
 const { default: Copyright } = require("../components/ui/copiryght");
 const { default: Header } = require("../components/ui/header");
-const markdown = require('markdown').markdown
+//const markdown = require('markdown').markdown
+const remarkHtml = require('remark-html')
+const remark = require('remark') 
+
+async function mdToHtml(content) {
+    const html = await remark().use(remarkHtml, {sanitize: false}).process(content)
+    return html.toString()
+}
 
 function post(props) {
 
@@ -16,7 +23,8 @@ function post(props) {
         thumbnail,
         tag,
         category,
-        content
+        content,
+        html
 
     if (props.post) {
         var { id,
@@ -29,9 +37,10 @@ function post(props) {
         tag,
         category,
         content } = JSON.parse(props.post)
+        html = props.html
 
         tag = tag.split(",")
-        console.log(content)
+        console.log(html)
     }
 
     return (
@@ -63,7 +72,9 @@ function post(props) {
                     </Box>
                 </Box>
                 <Container className={classes.post_container} style={{display: "flex"}}>
-                    <Typography className={classes.post_content} dangerouslySetInnerHTML={{__html: (content) ? markdown.toHTML(content) : "Loading..."}}></Typography>
+                    {(content) ? (
+                        <Typography className={classes.post_content} dangerouslySetInnerHTML={{__html: html}}></Typography>
+                    ) : ("")}
                 </Container>
             <Copyright/>
         </>
@@ -85,7 +96,8 @@ export async function getStaticProps({ params }) {
 
     return {
         props: {
-            post: JSON.stringify(rows[0])
+            post: JSON.stringify(rows[0]),
+            html: await mdToHtml(rows[0].content)
         }
     }
 }
