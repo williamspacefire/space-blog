@@ -53,4 +53,35 @@ No canto superior direito clique em New Application (Nova Aplicação)</Typograp
     )
 }
 
+export async function getStaticProps({ params }) {
+    const { post } = params
+    const mysql = require('mysql2/promise')
+    
+    const connection = await mysql.createConnection({
+        host     : process.env.DB_HOST,
+        user     : process.env.DB_USER,
+        password : process.env.DB_PASSWORD,
+        database : process.env.DB,
+        namedPlaceholders: true
+    });
+    //connection.connect()
+
+    const [rows, fields] = await connection.query(`SELECT * FROM posts WHERE permalink = ?`, [`/${post}`])
+
+    console.log(rows)
+
+    return {
+        props: {
+            post: rows
+        }
+    }
+}
+
+export async function getStaticPaths() {
+    return {
+        paths: [],
+        fallback: true
+    }
+}
+
 export default post

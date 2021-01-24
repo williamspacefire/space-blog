@@ -1,7 +1,6 @@
 import { Card, Chip, CardActions, CardContent, CardMedia, Container, Grid, IconButton, Typography, Paper } from "@material-ui/core";
 import { Favorite, Share } from "@material-ui/icons"
 import classes from '../style/index.module.css'
-import  Image from 'next/image'
 import Link from 'next/link'
 
 function HomePosts() {
@@ -9,18 +8,18 @@ function HomePosts() {
     return (
         <>
             <Grid container spacing={2}>
-                <Grid item xl justify="center" style={{width: "100%",padding: "32px"}}>
+                <Grid item xl justify="center" style={{width: "100%",padding: "20px"}}>
                     <div className={classes.featured}>
                         
                         <div className={classes.featured_info}>
                             <div className={classes.cloudtags}>
-                                <Chip size="small" color="secondary" label="AUTOMAÇÃO" className={classes.chip_tags}/>
-                                <Chip size="small" color="secondary" label="SSL" className={classes.chip_tags}/>
-                                <Chip size="small" color="secondary" label="TUTORIAL" className={classes.chip_tags}/>
-                                <Chip size="small" color="secondary" label="DISCORD" className={classes.chip_tags}/>
-                                <Chip size="small" color="secondary" label="BOT" className={classes.chip_tags}/>
+                                <Chip color="secondary" label="AUTOMAÇÃO" className={classes.chip_tags}/>
+                                <Chip color="secondary" label="SSL" className={classes.chip_tags}/>
+                                <Chip color="secondary" label="TUTORIAL" className={classes.chip_tags}/>
+                                <Chip color="secondary" label="DISCORD" className={classes.chip_tags}/>
+                                <Chip color="secondary" label="BOT" className={classes.chip_tags}/>
                             </div>
-                            <Typography variant="h4">
+                            <Typography variant="h1" className={classes.post_title}>
                                 Criando um Bot para o Discord com Node.js – Parte 1
                             </Typography>
                         </div>
