@@ -3,14 +3,20 @@ import classes from "../components/style/post.module.css"
 const { Container, Typography, Box, Chip, Avatar } = require("@material-ui/core");
 const { default: Copyright } = require("../components/ui/copiryght");
 const { default: Header } = require("../components/ui/header");
-//const markdown = require('markdown').markdown
 const remarkHtml = require('remark-html')
 const remark = require('remark') 
-const rmParse = require('remark-parse')
+const remarkParse = require('remark-parse')
 const unified = require('unified')
+const remarkPrism = require('remark-prism')
+const remarkReact = require('remark-react')
 
-async function mdToHtml(content) {
-    const html = await unified().use(remarkHtml, {sanitize: false}).use(rmParse, {sanitize: false}).process(content)
+async function markdownToHtml(content) {
+    const html = await unified()
+    .use(remarkHtml, {sanitize: false})
+    .use(remarkParse, {sanitize: false})
+    .use(remarkPrism)
+    .process(content)
+    
     return html.toString()
 }
 
@@ -95,11 +101,12 @@ export async function getStaticProps({ params }) {
     });
 
     const [rows] = await connection.query(`SELECT * FROM posts WHERE permalink = ? LIMIT 1`, [`/${post}`])
+    const html = await markdownToHtml(rows[0].content)
 
     return {
         props: {
             post: JSON.stringify(rows[0]),
-            html: await mdToHtml(rows[0].content)
+            html: html
         }
     }
 }
