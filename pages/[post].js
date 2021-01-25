@@ -8,7 +8,6 @@ const remark = require('remark')
 const remarkParse = require('remark-parse')
 const unified = require('unified')
 const remarkPrism = require('remark-prism')
-const remarkReact = require('remark-react')
 
 async function markdownToHtml(content) {
     const html = await unified()
