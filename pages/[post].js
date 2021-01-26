@@ -112,7 +112,7 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
     return {
-        paths: ['/criando-um-bot-para-o-discord-com-node-js-parte-1'],
+        paths: [],
         fallback: true
     }
 }
