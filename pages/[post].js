@@ -11,9 +11,9 @@ const remarkPrism = require('remark-prism')
 
 async function markdownToHtml(content) {
     const html = await unified()
-    .use(remarkHtml, {sanitize: false})
-    .use(remarkParse, {sanitize: false})
+    .use(remarkParse)
     .use(remarkPrism)
+    .use(remarkHtml)
     .process(content)
     
     return html.toString()
