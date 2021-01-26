@@ -7,12 +7,12 @@ const remarkHtml = require('remark-html')
 const remark = require('remark') 
 const remarkParse = require('remark-parse')
 const unified = require('unified')
-const remarkPrism = require('remark-prism')
+const highlightJs = require('remark-highlight.js')
 
 async function markdownToHtml(content) {
     const html = await unified()
     .use(remarkParse)
-    .use(remarkPrism)
+    .use(highlightJs)
     .use(remarkHtml)
     .process(content)
     
@@ -79,7 +79,7 @@ function post(props) {
                     </Box>
                 </Box>
                 <Container className={classes.post_container} style={{display: "flex"}}>
-                    {(content) ? (
+                {(content) ? (
                         <div className={classes.post_content} dangerouslySetInnerHTML={{__html: html}}></div>
                     ) : ("")}
                 </Container>
