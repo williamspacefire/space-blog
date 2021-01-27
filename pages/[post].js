@@ -120,12 +120,12 @@ export async function getStaticProps({ params }) {
     });
 
     const [rows] = await connection.query(`SELECT * FROM posts WHERE permalink = ? LIMIT 1`, [`/${post}`])
-    //const html = await markdownToHtml(rows[0].content)
+
+    if (!rows[0]) return {notFound: true}
 
     return {
         props: {
             post: JSON.stringify(rows[0])
-            //html: html
         }
     }
 }
