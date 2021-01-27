@@ -50,10 +50,7 @@ function post(props) {
         tag,
         category,
         content } = JSON.parse(props.post)
-        html = props.html
-
         tag = tag.split(",")
-        console.log(html)
     }
 
     return (
