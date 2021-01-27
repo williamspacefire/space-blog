@@ -1,22 +1,28 @@
+import React from 'react'
 import classes from "../components/style/post.module.css"
+import { H2, P, Image } from '../components/ui/htmltoreact'
 
 const { Container, Typography, Box, Chip, Avatar } = require("@material-ui/core");
 const { default: Copyright } = require("../components/ui/copiryght");
 const { default: Header } = require("../components/ui/header");
-const remarkHtml = require('remark-html')
+//const remarkHtml = require('remark-html')
 const remark = require('remark') 
 const remarkParse = require('remark-parse')
 const unified = require('unified')
-const highlightJs = require('remark-highlight.js')
+const highlightJs = require('rehype-highlight')
+const rehypeReact = require("rehype-react")
+const remarkRehype = require("remark-rehype")
+const rehypeStringify = require("rehype-stringify")
 
 async function markdownToHtml(content) {
     const html = await unified()
     .use(remarkParse)
     .use(highlightJs)
-    .use(remarkHtml)
-    .process(content)
+    //.use(remarkHtml)
+    .use(remarkReact)
+    .processSync(content).result
     
-    return html.toString()
+    return html
 }
 
 function post(props) {
@@ -80,7 +86,24 @@ function post(props) {
                 </Box>
                 <Container className={classes.post_container} style={{display: "flex"}}>
                 {(content) ? (
-                        <div className={classes.post_content} dangerouslySetInnerHTML={{__html: html}}></div>
+                    <div className={classes.post_content}>
+                        {
+                            unified()
+                            .use(remarkParse,{sanitize: false})
+                            .use(remarkRehype, {}, {sanitize: false})
+                            .use(highlightJs,{sanitize: false})
+                            .use(rehypeStringify, {sanitize: false})
+                            .use(rehypeReact, {
+                                createElement: React.createElement,
+                                components: {
+                                    p: P,
+                                    h2: H2,
+                                    img: Image
+                                }
+                            })
+                            .processSync(content).result
+                        }
+                    </div>
                     ) : ("")}
                 </Container>
             <Copyright/>
@@ -100,12 +123,12 @@ export async function getStaticProps({ params }) {
     });
 
     const [rows] = await connection.query(`SELECT * FROM posts WHERE permalink = ? LIMIT 1`, [`/${post}`])
-    const html = await markdownToHtml(rows[0].content)
+    //const html = await markdownToHtml(rows[0].content)
 
     return {
         props: {
-            post: JSON.stringify(rows[0]),
-            html: html
+            post: JSON.stringify(rows[0])
+            //html: html
         }
     }
 }
