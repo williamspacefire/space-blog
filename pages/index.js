@@ -2,7 +2,10 @@ import Copyright from "../components/ui/copiryght"
 import Header from "../components/ui/header"
 import HomePosts from "../components/ui/home-posts"
 
-function index() {
+function index(props) {
+    
+    const posts = JSON.parse(props.posts)
+    console.log(posts)
 
     return (
         <>
@@ -31,7 +34,9 @@ export async function getStaticProps() {
     const week = 7*day
     
     return {
-        props: rows,
+        props: {
+            posts: JSON.stringify(rows)
+        },
         revalidate: day
     }
 }
