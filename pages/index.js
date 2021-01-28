@@ -33,6 +33,8 @@ export async function getStaticProps() {
     const day = hour*24
     const week = 7*day
     
+    console.log(rows)
+    
     return {
         props: {
             posts: JSON.stringify(rows)
