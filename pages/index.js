@@ -23,7 +23,7 @@ export async function getStaticProps() {
         database: process.env.DB
     })
     
-    const {rows} = await connection.query("SELECT * FROM posts LIMIT 5 ORDER BY DESC")
+    const {rows} = await connection.query("SELECT * FROM posts ORDER BY id DESC LIMIT 5")
     
     const minute = 60
     const hour = minute*60
