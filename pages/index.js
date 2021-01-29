@@ -10,13 +10,13 @@ function index(props) {
     return (
         <>
             <Header>
-                <title>Compilado; - Seu blog de Programação, Open Source e muito código</title>
+                <title>Compilado; - Programação, Open Source e muito código</title>
                 <meta name="description" content="A missão do Blog Compilado é lhe passar conhecimentos importantes sobre o mundo da programação com artigos completos e explicativos." />
                 <meta name="keywords" content="programação,tecnologia,open source,tutorial,code,javascript,nodejs,node,npm,security,compilado,blog,machine learning,aprendizado de máquina,inteligêngia artificial,ia,ai,ml,discord,bot,discord.js" />
                 <link rel="canonical" href="https://compilado.xyz" />
                 <meta property="og:site_name" content="Compilado" />
                 <meta property="og:type" content="article" />
-                <meta property="og:title" content="Compilado; - Seu blog de Programação, Open Source e muito código" />
+                <meta property="og:title" content="Compilado; - Programação, Open Source e muito código" />
                 <meta property="og:description" content="A missão do Blog Compilado é lhe passar conhecimentos importantes sobre o mundo da programação com artigos completos e explicativos." />
                 <meta property="og:url" content="https://compilado.xyz/" />
                 <meta property="og:image" content="https://res.cloudinary.com/williamspacefire/image/upload/v1611871360/compilado/discord_bot_lnnyyy.jpg" />
@@ -50,7 +50,7 @@ function index(props) {
                 <meta property="twitter:card" content="summary_large_image" />
                 <meta property="twitter:site" content="@wiliamspacefire" />
                 <meta property="twitter:domain" content="compilado.xyz" />
-                <meta property="twitter:title" content="Compilado; - Seu blog de Programação, Open Source e muito código" />
+                <meta property="twitter:title" content="Compilado; - Programação, Open Source e muito código" />
                 <meta property="twitter:description" content="A missão do Blog Compilado é lhe passar conhecimentos importantes sobre o mundo da programação com artigos completos e explicativos." />
                 <meta property="twitter:image" content="https://res.cloudinary.com/williamspacefire/image/upload/v1611871360/compilado/discord_bot_lnnyyy.jpg" />
             </Header>
