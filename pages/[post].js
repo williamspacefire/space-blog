@@ -97,7 +97,7 @@ function post(props) {
                                 {title}
                             </Typography>
                             <div className={classes.post_author}>
-                                <Avatar alt="{author}" src="https://secure.gravatar.com/avatar/af334e44eb2ffe56ceeb9a3047f4963b?s=35&d=mm&r=g"/>
+                                <Avatar alt={author} src="https://secure.gravatar.com/avatar/af334e44eb2ffe56ceeb9a3047f4963b?s=35&d=mm&r=g"/>
                                 <Typography>
                                     {author}
                                 </Typography>
