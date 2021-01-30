@@ -1,7 +1,7 @@
-import { Card, Chip, CardActions, CardContent, CardMedia, Container, Grid, IconButton, Typography, Paper } from "@material-ui/core";
+import { Card, Chip, CardActions, CardContent, CardMedia, Container, Grid, IconButton, Typography, Paper, Link } from "@material-ui/core";
 import { Favorite, Share } from "@material-ui/icons"
 import classes from '../style/index.module.css'
-import Link from 'next/link'
+import LinkNext from 'next/link'
 
 function HomePosts() {
 
@@ -9,21 +9,23 @@ function HomePosts() {
         <>
             <Grid container spacing={2}>
                 <Grid item xl justify="center" style={{width: "100%",padding: "20px"}}>
-                    <div className={classes.featured}>
-                        
-                        <div className={classes.featured_info}>
-                            <div className={classes.cloudtags}>
-                                <Chip color="secondary" label="AUTOMAÇÃO" className={classes.chip_tags}/>
-                                <Chip color="secondary" label="SSL" className={classes.chip_tags}/>
-                                <Chip color="secondary" label="TUTORIAL" className={classes.chip_tags}/>
-                                <Chip color="secondary" label="DISCORD" className={classes.chip_tags}/>
-                                <Chip color="secondary" label="BOT" className={classes.chip_tags}/>
+                    <Link href="/">
+                        <div className={classes.featured}>
+                            
+                            <div className={classes.featured_info}>
+                                <div className={classes.cloudtags}>
+                                    <Chip color="secondary" label="AUTOMAÇÃO" className={classes.chip_tags}/>
+                                    <Chip color="secondary" label="SSL" className={classes.chip_tags}/>
+                                    <Chip color="secondary" label="TUTORIAL" className={classes.chip_tags}/>
+                                    <Chip color="secondary" label="DISCORD" className={classes.chip_tags}/>
+                                    <Chip color="secondary" label="BOT" className={classes.chip_tags}/>
+                                </div>
+                                <Typography variant="h1" className={classes.post_title}>
+                                    Criando um Bot para o Discord com Node.js – Parte 1
+                                </Typography>
                             </div>
-                            <Typography variant="h1" className={classes.post_title}>
-                                Criando um Bot para o Discord com Node.js – Parte 1
-                            </Typography>
                         </div>
-                    </div>
+                    </Link>
                 </Grid>
             </Grid>                    
             <Grid container justify="flex-start">
@@ -35,13 +37,15 @@ function HomePosts() {
                                 image="https://i0.wp.com/blog.meycup.com/wp-content/uploads/2020/09/12.jpg?resize=770%2C480&ssl="
                                 title="Criando um Bot para o Discord com Node.js – Parte 1" />
                             <CardContent>
-                                <Link href="/criando-um-bot-para-o-discord-com-node-js-parte-1">
-                                    <Typography variant="h5">
-                                        Criando um Bot para o Discord com Node.js – Parte 1
-                                    </Typography>
-                                </Link>
+                                <LinkNext href="/criando-um-bot-para-o-discord-com-node-js-parte-1" passHref>
+                                    <Link>
+                                        <Typography variant="h5" component="a">
+                                            Criando um Bot para o Discord com Node.js – Parte 1
+                                        </Typography>
+                                    </Link>
+                                </LinkNext>
                                 <Typography>
-                                Nessa série de posts vamos aprender a criar um bot para o Discord. Recentemente eu precisei de um Bot para um servidor do Discord que eu tenho, existem várias opções de Bots atualmente, opções muito boas até, mas eu estava precisando de algo personalizado, uma personalização que os outros Bots não oferecem.
+                                     Nessa série de posts vamos aprender a criar um bot para o Discord. Recentemente eu precisei de um Bot para um servidor do Discord que eu tenho, existem várias opções de Bots atualmente, opções muito boas até, mas eu estava precisando de algo personalizado, uma personalização que os outros Bots não oferecem.
                                 </Typography>
                             </CardContent>
                             <CardActions>

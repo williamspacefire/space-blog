@@ -1,7 +1,7 @@
-import  { AppBar, IconButton, Toolbar, Typography }  from '@material-ui/core'
+import  { AppBar, IconButton, Link, Toolbar, Typography }  from '@material-ui/core'
 import { Search } from '@material-ui/icons'
 import  Head                             from 'next/head'
-import  Link                             from 'next/link'
+import  LinkNext                             from 'next/link'
 import style from '../style/header.module.css'
 
 function Header({ children }) {
@@ -17,9 +17,11 @@ function Header({ children }) {
             </Head>
             <AppBar position="fixed" style={{backgroundColor:"white", color:"black"}}>
                 <Toolbar>
-                        <Link href="/">
-                            <Typography style={{flexGrow: 1}} className={style.link} variant="h6" component="a">Compilado;</Typography>
-                        </Link>
+                        <LinkNext href="/" passHref>
+                            <Link style={{flexGrow: 1}}>
+                                <Typography className={style.linkNext} variant="h6">Compilado;</Typography>
+                            </Link>
+                        </LinkNext>
                         <IconButton>
                             <Search/>
                         </IconButton>
