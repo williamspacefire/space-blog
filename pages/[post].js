@@ -79,7 +79,7 @@ function post(props) {
                 <meta property="twitter:title" content={`${title} - Compilado;`} />
                 <meta property="twitter:description" content={description} />
                 <meta property="twitter:image" content={thumbnail} />
-                <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@10.5.0/styles/atom-one-dark.min.css"/>
+                <link rel="stylesheet" href="/css/atom-one-dark.min.css"/>
             </Header>
             <Box justifyContent="center" flexWrap="wrap" display="flex" className={classes.cover} style={{backgroundImage: `url(${thumbnail})`}}>
                 <Box>
