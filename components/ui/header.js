@@ -1,15 +1,15 @@
-import  { AppBar, IconButton, Link, Toolbar, Typography }  from '@material-ui/core'
+import  { AppBar, IconButton, Link, Toolbar, Typography } from '@material-ui/core'
 import { Search } from '@material-ui/icons'
-import  Head                             from 'next/head'
-import  LinkNext                             from 'next/link'
+import  Head from 'next/head'
+import  LinkNext from 'next/link'
 import style from '../style/header.module.css'
+import 'fontsource-roboto'
 
 function Header({ children }) {
     return (
         <>
             <Head>
                 {children}
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
                 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
@@ -19,7 +19,7 @@ function Header({ children }) {
                 <Toolbar>
                         <LinkNext href="/" passHref>
                             <Link style={{flexGrow: 1}}>
-                                <Typography className={style.linkNext} variant="h6">Compilado;</Typography>
+                                <Typography className={style.linkNext}>Compilado;</Typography>
                             </Link>
                         </LinkNext>
                         <IconButton>
