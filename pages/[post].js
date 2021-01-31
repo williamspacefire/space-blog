@@ -48,7 +48,7 @@ function post(props) {
         thumbnail_width,
         thumbnail_height } = JSON.parse(props.post)
         
-        tag = tag.split(",")
+        category = category.split(",")
         date = new Date(date)
     }
 
@@ -57,7 +57,7 @@ function post(props) {
             <Header>
                 <title>{`${title} - Compilado;`}</title>
                 <meta name="description" content={description}/> 
-                <meta name="keywords" content={tag.toString()} />
+                <meta name="keywords" content={tag} />
                 <link rel="canonical" href={`https://compilado.xyz${permalink}`} />
                 <meta property="og:site_name" content="Compilado;" />
                 <meta property="og:type" content="article" />
@@ -68,7 +68,7 @@ function post(props) {
                 <meta property="og:image:secure_url" content={thumbnail} />
                 <meta property="og:image:width" content={thumbnail_width} />
                 <meta property="og:image:height" content={thumbnail_height} />
-                {tag.map((text) => {
+                {category.map((text) => {
                     return <meta property="article:tag" content={text} />
                 })}
                 <meta property="article:published_time" content={date.toISOString()} />
@@ -86,8 +86,8 @@ function post(props) {
                     <div className={classes.post_info}>
                         <center>
                             <div className={classes.post_tags}>
-                                {tag?.map((tag) => {
-                                    return <Chip color="secondary" label={tag.toUpperCase()} className={classes.chip_tags}/>
+                                {category?.map((category) => {
+                                    return <Chip size="small" color="secondary" label={category.toUpperCase()} className={classes.chip_tags}/>
                                 })}
                                 <Typography className={classes.post_time}>
                                     {`${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ás ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`}
@@ -98,7 +98,7 @@ function post(props) {
                             </Typography>
                             <div className={classes.post_author}>
                                 {
-                                    <Avatar><Img alt={author} src="/v1612101129/avatar/williamspacefire_xuhvy6.jpg" width={40} height={40}/></Avatar>
+                                    <Avatar><Img priority={true} quality={100} alt={author} src="/v1612101129/avatar/williamspacefire_xuhvy6.jpg" width={40} height={40}/></Avatar>
                                 }
                                 <Typography>
                                     {author}
