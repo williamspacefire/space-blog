@@ -54,7 +54,7 @@ function index(props) {
                 <meta property="twitter:description" content="A missão do Blog Compilado é lhe passar conhecimentos importantes sobre o mundo da programação com artigos completos e explicativos." />
                 <meta property="twitter:image" content="https://res.cloudinary.com/williamspacefire/image/upload/v1611871360/compilado/discord_bot_lnnyyy.jpg" />
             </Header>
-            <HomePosts/>
+            <HomePosts posts={posts} />
             <Copyright/>
         </>
     )
@@ -70,7 +70,7 @@ export async function getStaticProps() {
         database: process.env.DB
     })
     
-    const [rows] = await connection.query("SELECT * FROM posts ORDER BY id DESC LIMIT 5")
+    const [rows] = await connection.query("SELECT * FROM posts WHERE status = 'publish' ORDER BY id DESC LIMIT 5")
     
     const minute = 60
     const hour = minute*60
