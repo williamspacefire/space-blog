@@ -67,3 +67,19 @@ h1.post_title {
         max-width: 100%;
     }    
 }
+
+p.paragraph {
+    margin-bottom: 34px;
+    color: #777777;
+    margin-top: 0;
+    line-height: 1.5;
+    font-size: 1.125rem;
+}
+
+h2.heading {
+    margin-top: 36px;
+    margin-bottom: 20px;
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.3;
+}
