@@ -3,86 +3,70 @@ import { Favorite, Share } from "@material-ui/icons"
 import classes from '../style/index.module.css'
 import LinkNext from 'next/link'
 
-function HomePosts() {
+function HomePosts({ posts }) {
 
     return (
         <>
             <Grid container spacing={2}>
                 <Grid item xl justify="center" style={{width: "100%",padding: "20px"}}>
-                    <Link href="/">
-                        <div className={classes.featured}>
-                            
-                            <div className={classes.featured_info}>
-                                <div className={classes.cloudtags}>
-                                    <Chip color="secondary" label="AUTOMAÇÃO" className={classes.chip_tags}/>
-                                    <Chip color="secondary" label="SSL" className={classes.chip_tags}/>
-                                    <Chip color="secondary" label="TUTORIAL" className={classes.chip_tags}/>
-                                    <Chip color="secondary" label="DISCORD" className={classes.chip_tags}/>
-                                    <Chip color="secondary" label="BOT" className={classes.chip_tags}/>
+                    <LinkNext href={posts[0].permalink} passHref>
+                        <Link>
+                            <div className={classes.featured} style={{backgroundImage: `url('${posts[0].thumbnail}')`}}>
+                                <div className={classes.featured_info}>
+                                    <div className={classes.cloudtags}>
+                                        {
+                                            posts[0].category.split(',').map((category) => {
+                                                return <Chip color="secondary" label={category.toUpperCase()} className={classes.chip_tags}/>
+                                            })
+                                        }
+                                    </div>
+                                    <Typography variant="h1" className={classes.post_title}>
+                                        {posts[0].title}
+                                    </Typography>
                                 </div>
-                                <Typography variant="h1" className={classes.post_title}>
-                                    Criando um Bot para o Discord com Node.js – Parte 1
-                                </Typography>
                             </div>
-                        </div>
-                    </Link>
+                        </Link>
+                    </LinkNext>
                 </Grid>
             </Grid>                    
             <Grid container justify="flex-start">
                 <Grid container sm>
-                    <Grid item>
-                        <Card className={classes.post_card}>
-                            <CardMedia 
-                                className={classes.media}
-                                image="https://i0.wp.com/blog.meycup.com/wp-content/uploads/2020/09/12.jpg?resize=770%2C480&ssl="
-                                title="Criando um Bot para o Discord com Node.js – Parte 1" />
-                            <CardContent>
-                                <Typography variant="h2" className={classes.posts_title}>
-                                    <LinkNext href="/criando-um-bot-para-o-discord-com-node-js-parte-1" passHref>
-                                        <Link>
-                                        Criando um Bot para o Discord com Node.js – Parte 1
-                                        </Link>
-                                    </LinkNext>
-                                </Typography>
-                                <Typography>
-                                     Nessa série de posts vamos aprender a criar um bot para o Discord. Recentemente eu precisei de um Bot para um servidor do Discord que eu tenho, existem várias opções de Bots atualmente, opções muito boas até, mas eu estava precisando de algo personalizado, uma personalização que os outros Bots não oferecem.
-                                </Typography>
-                            </CardContent>
-                            <CardActions>
-                                <IconButton aria-label="Favoritar postagem">
-                                    <Favorite/>
-                                </IconButton>
-                                <IconButton aria-label="Compoartilhar postagem">
-                                    <Share/>
-                                </IconButton>
-                            </CardActions>
-                        </Card>
-                    </Grid>
-                
-                    <Grid item>
-                        <Card className={classes.post_card}>
-                            <CardMedia 
-                                className={classes.media}
-                                image="https://i0.wp.com/blog.meycup.com/wp-content/uploads/2020/07/certificado-ssl-800x400-1.png?resize=570%2C399&ssl=1"
-                                title="Certificado SSL Gratuito com Let’s Encrypt/Certbot" />
-                            <CardContent>
-                                <Typography variant="h5">
-                                    Certificado SSL Gratuito com Let’s Encrypt/Certbot
-                                </Typography>
-                                <Typography>
-                                    Desde que foi anunciado que os principais navegadores da Web iriam mostrar páginas usando protocolo HTTP como inseguras, começou uma corrida para implementar certificados SSL nos sites. Se você tem um site que é acessado pelo protocolo HTTP, será mostrada uma mensagem de site inseguro aos seus usuários...
-                                </Typography>
-                            </CardContent>
-                            <CardActions>
-                                <IconButton>
-                                    <Favorite/>
-                                </IconButton>
-                                <IconButton>
-                                    <Share/>
-                                </IconButton>
-                            </CardActions>
-                        </Card>
-                    </Grid>
+                    {
+                        posts.map((post, index) => {
+                            if (index != 0) return (
+                                <>
+                                    <Grid item>
+                                        <Card className={classes.post_card}>
+                                            <CardMedia 
+                                                className={classes.media}
+                                                image={post.thumbnail}
+                                                title={post.title} />
+                                            <CardContent>
+                                                <Typography variant="h2" className={classes.posts_title}>
+                                                    <LinkNext href={post.permalink} passHref>
+                                                        <Link>
+                                                            {post.title}
+                                                        </Link>
+                                                    </LinkNext>
+                                                </Typography>
+                                                <Typography>
+                                                    {post.description}
+                                                </Typography>
+                                            </CardContent>
+                                            <CardActions>
+                                                <IconButton aria-label={`Favoritar postagem ${post.title}`}>
+                                                    <Favorite/>
+                                                </IconButton>
+                                                <IconButton aria-label={`Compoartilhar postagem ${post.title}`}>
+                                                    <Share/>
+                                                </IconButton>
+                                            </CardActions>
+                                        </Card>
+                                    </Grid>
+                                </>
+                            )
+                        })
+                    }
                 </Grid>
                 <Grid item>
                     <Paper style={{padding: "10px"}}>
