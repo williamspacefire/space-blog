@@ -22,7 +22,7 @@ function Header({ children }) {
                                 <Typography className={style.linkNext}>Compilado;</Typography>
                             </Link>
                         </LinkNext>
-                        <IconButton>
+                        <IconButton aria-label="Pesquisar no blog">
                             <Search/>
                         </IconButton>
                 </Toolbar>

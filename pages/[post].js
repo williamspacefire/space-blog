@@ -1,6 +1,7 @@
 import React from 'react'
 import classes from "../components/style/post.module.css"
 import { H2, P, Image } from '../components/ui/htmltoreact'
+import Img from 'next/image'
 
 const { Container, Typography, Box, Chip, Avatar } = require("@material-ui/core");
 const { default: Copyright } = require("../components/ui/copiryght");
@@ -67,7 +68,6 @@ function post(props) {
                 <meta property="og:image:secure_url" content={thumbnail} />
                 <meta property="og:image:width" content={thumbnail_width} />
                 <meta property="og:image:height" content={thumbnail_height} />
-                {/*<meta property="article:section" content="Bot" />*/}
                 {tag.map((text) => {
                     return <meta property="article:tag" content={text} />
                 })}
@@ -97,7 +97,9 @@ function post(props) {
                                 {title}
                             </Typography>
                             <div className={classes.post_author}>
-                                <Avatar alt={author} src="https://secure.gravatar.com/avatar/af334e44eb2ffe56ceeb9a3047f4963b?s=35&d=mm&r=g"/>
+                                {
+                                    <Avatar><Img alt={author} src="/v1612101129/avatar/williamspacefire_xuhvy6.jpg" width={40} height={40}/></Avatar>
+                                }
                                 <Typography>
                                     {author}
                                 </Typography>
@@ -157,7 +159,7 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
     return {
-        paths: [],
+        paths: ['/criando-um-bot-para-o-discord-com-node-js-parte-1'],
         fallback: 'blocking'
     }
 }

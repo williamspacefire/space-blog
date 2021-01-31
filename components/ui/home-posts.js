@@ -37,22 +37,22 @@ function HomePosts() {
                                 image="https://i0.wp.com/blog.meycup.com/wp-content/uploads/2020/09/12.jpg?resize=770%2C480&ssl="
                                 title="Criando um Bot para o Discord com Node.js – Parte 1" />
                             <CardContent>
-                                <LinkNext href="/criando-um-bot-para-o-discord-com-node-js-parte-1" passHref>
-                                    <Link>
-                                        <Typography variant="h5" component="a">
-                                            Criando um Bot para o Discord com Node.js – Parte 1
-                                        </Typography>
-                                    </Link>
-                                </LinkNext>
+                                <Typography variant="h2" className={classes.posts_title}>
+                                    <LinkNext href="/criando-um-bot-para-o-discord-com-node-js-parte-1" passHref>
+                                        <Link>
+                                        Criando um Bot para o Discord com Node.js – Parte 1
+                                        </Link>
+                                    </LinkNext>
+                                </Typography>
                                 <Typography>
                                      Nessa série de posts vamos aprender a criar um bot para o Discord. Recentemente eu precisei de um Bot para um servidor do Discord que eu tenho, existem várias opções de Bots atualmente, opções muito boas até, mas eu estava precisando de algo personalizado, uma personalização que os outros Bots não oferecem.
                                 </Typography>
                             </CardContent>
                             <CardActions>
-                                <IconButton>
+                                <IconButton aria-label="Favoritar postagem">
                                     <Favorite/>
                                 </IconButton>
-                                <IconButton>
+                                <IconButton aria-label="Compoartilhar postagem">
                                     <Share/>
                                 </IconButton>
                             </CardActions>
