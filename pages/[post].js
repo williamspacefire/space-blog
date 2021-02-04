@@ -2,6 +2,7 @@ import React from 'react'
 import classes from "../components/style/post.module.css"
 import { H2, P, Image } from '../components/ui/htmltoreact'
 import Img from 'next/image'
+import { dateFormat } from "../components/utils"
 
 const { Container, Typography, Box, Chip, Avatar } = require("@material-ui/core");
 const { default: Copyright } = require("../components/ui/copiryght");
@@ -29,7 +30,9 @@ function post(props) {
         modified_at,
         twitter,
         thumbnail_width,
-        thumbnail_height
+        thumbnail_height,
+        dateISO,
+        modified_atISO
 
     if (props.post) {
         var { id,
@@ -50,6 +53,8 @@ function post(props) {
         
         category = category.split(",")
         date = new Date(date)
+        dateISO = dateFormat(date)
+        modified_atISO = dateFormat(modified_at)
     }
 
     return (
@@ -71,8 +76,8 @@ function post(props) {
                 {category.map((text) => {
                     return <meta property="article:tag" content={text} />
                 })}
-                <meta property="article:published_time" content={date.toISOString()} />
-                <meta property="article:modified_time" content={modified_at} />
+                <meta property="article:published_time" content={dateISO} />
+                <meta property="article:modified_time" content={modified_atISO} />
                 <meta property="twitter:card" content="summary_large_image" />
                 <meta property="twitter:site" content={`@${twitter}`} />
                 <meta property="twitter:domain" content="compilado.xyz" />

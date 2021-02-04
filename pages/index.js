@@ -1,6 +1,7 @@
 import Copyright from "../components/ui/copiryght"
 import Header from "../components/ui/header"
 import HomePosts from "../components/ui/home-posts"
+import { dateFormat } from '../components/utils'
 
 function index(props) {
     
@@ -45,8 +46,8 @@ function index(props) {
                 <meta property="article:tag" content="ml" />
                 <meta property="article:tag" content="automatização" />
                 <meta property="article:tag" content="shell" />
-                <meta property="article:published_time" content="2021-01-01T03:00:00Z" />
-                <meta property="article:modified_time" content="2021-01-01T12:54:24Z" />
+                <meta property="article:published_time" content={props.generateDate} />
+                <meta property="article:modified_time" content={props.generateDate} />
                 <meta property="twitter:card" content="summary_large_image" />
                 <meta property="twitter:site" content="@wiliamspacefire" />
                 <meta property="twitter:domain" content="compilado.xyz" />
@@ -81,7 +82,8 @@ export async function getStaticProps() {
     
     return {
         props: {
-            posts: JSON.stringify(rows)
+            posts: JSON.stringify(rows),
+            generateDate: dateFormat(new Date().toISOString())
         },
         revalidate: day
     }
