@@ -4,7 +4,7 @@ module.exports = {
       path: "https://res.cloudinary.com/williamspacefire/image/upload"
     },
     i18n: {
-      locales: ['pt'],
-      defaultLocale: 'pt'
+      locales: ['pt-br'],
+      defaultLocale: 'pt-br'
     }
   }

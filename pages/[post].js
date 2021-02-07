@@ -95,7 +95,7 @@ function post(props) {
                                     return <Chip size="small" color="secondary" label={category.toUpperCase()} className={classes.chip_tags}/>
                                 })}
                                 <Typography className={classes.post_time}>
-                                    {`${date.getDate()}/${date.getMonth()}/${date.getFullYear()} ás ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`}
+                                    {`${date.getDate()}/${date.getMonth() < 10 ? "0"+date.getMonth() : date.getMonth()}/${date.getFullYear()} ás ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`}
                                 </Typography>
                             </div>
                             <Typography variant="h1" className={classes.post_title}>
