@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from "../components/style/post.module.css"
-import { H2, P, Image } from '../components/ui/htmltoreact'
+import { H2, P, Image, Link } from '../components/ui/htmltoreact'
 import Img from 'next/image'
 import { dateFormat } from "../components/utils"
 
@@ -127,7 +127,8 @@ function post(props) {
                             components: {
                                 p: P,
                                 h2: H2,
-                                img: Image
+                                img: Image,
+                                a: Link
                             }
                         })
                         .processSync(content).result
