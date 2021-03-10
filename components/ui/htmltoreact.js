@@ -27,7 +27,7 @@ export function Link(props) {
     if (urlHost.host != "compilado.xyz") {
         result = <a href={props.href} title={props.title} target="_blank">{props.children}</a>
     } else {
-        result = <NextLink href={props.href} passHref><a title={props.title}>{props.children}</a></NextLink>
+        result = <NextLink href={props.href} passHref><a title={props.title} rel="noopener noreferrer">{props.children}</a></NextLink>
     }
 
     return result
