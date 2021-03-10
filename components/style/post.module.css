@@ -43,8 +43,8 @@ h1.post_title {
     margin: 20px;
 }
 
-.post_info .chip_tags {
-    margin: 5px;
+.post_tags .chip_tags {
+    margin: 2px;
 }
 
 .post_content, .post_content img {

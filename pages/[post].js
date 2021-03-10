@@ -90,17 +90,13 @@ function post(props) {
                 <Box>
                     <div className={classes.post_info}>
                         <center>
-                            <div className={classes.post_tags}>
-                                {category?.map((category) => {
-                                    return <Chip size="small" color="secondary" label={category.toUpperCase()} className={classes.chip_tags}/>
-                                })}
-                                <Typography className={classes.post_time}>
-                                    {`${date.getDate()}/${date.getMonth() < 10 ? "0"+date.getMonth() : date.getMonth()}/${date.getFullYear()} ás ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`}
-                                </Typography>
-                            </div>
                             <Typography variant="h1" className={classes.post_title}>
                                 {title}
                             </Typography>
+
+                            <Typography className={classes.post_time}>
+                                    {`${date.getDate()}/${date.getMonth() < 10 ? "0"+date.getMonth() : date.getMonth()}/${date.getFullYear()} ás ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`}
+                                </Typography>
                             <div className={classes.post_author}>
                                 {
                                     <Avatar><Img priority={true} quality={100} alt={author} src="/v1612101129/avatar/williamspacefire_xuhvy6.jpg" width={40} height={40}/></Avatar>
@@ -133,6 +129,11 @@ function post(props) {
                         })
                         .processSync(content).result
                     }
+                    <div className={classes.post_tags}>
+                       <Typography variant="body1">Tags:</Typography> 
+                                {category?.map((category) => {
+                                    return <Chip size="small" color="secondary" label={category.toUpperCase()} className={classes.chip_tags}/>
+                                })}</div>
                 </div>
                 ) : ("")}
             </Container>
