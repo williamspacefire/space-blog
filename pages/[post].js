@@ -3,6 +3,8 @@ import classes from "../components/style/post.module.css"
 import { H2, P, Image, Link } from '../components/ui/htmltoreact'
 import Img from 'next/image'
 import { dateFormat } from "../components/utils"
+import Tags from '../components/posts/tags'
+import SharePost from '../components/share/post'
 
 const { Container, Typography, Box, Chip, Avatar } = require("@material-ui/core");
 const { default: Copyright } = require("../components/ui/copiryght");
@@ -129,11 +131,10 @@ function post(props) {
                         })
                         .processSync(content).result
                     }
+                    <SharePost classes={classes} title={title} canonical={`https://compilado.xyz${permalink}`} twitter={twitter}/>
                     <div className={classes.post_tags}>
-                       <Typography variant="body1">Tags:</Typography> 
-                                {category?.map((category) => {
-                                    return <Chip size="small" color="secondary" label={category.toUpperCase()} className={classes.chip_tags}/>
-                                })}</div>
+                        <Tags category={category} classes={classes}/>
+                    </div>
                 </div>
                 ) : ("")}
             </Container>
