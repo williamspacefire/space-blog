@@ -10,15 +10,16 @@ function HomePosts({ posts }) {
             <Grid container justify="flex-start">
                 <Grid container justify="center">
                     {
-                        posts.map((post, index) => {
+                        posts.map((post) => {
                             return (
                                 <>
-                                    <Grid item key={index}>
-                                        <Card className={classes.post_card}>
+                                    <Grid item key={post.id}>
+                                        <Card key={post.id} className={classes.post_card}>
                                             <CardMedia 
                                                 className={classes.media}
                                                 image={post.thumbnail}
-                                                title={post.title} />
+                                                title={post.title} 
+                                                key={post.id} />
                                             <CardContent>
                                                 <Typography variant="h2" className={classes.posts_title}>
                                                     <LinkNext href={post.permalink} passHref>

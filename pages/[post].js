@@ -75,8 +75,8 @@ function post(props) {
                 <meta property="og:image:secure_url" content={thumbnail} />
                 <meta property="og:image:width" content={thumbnail_width} />
                 <meta property="og:image:height" content={thumbnail_height} />
-                {category.map((text) => {
-                    return <meta property="article:tag" content={text} />
+                {category.map((text, index) => {
+                    return <meta key={index} property="article:tag" content={text} />
                 })}
                 <meta property="article:published_time" content={dateISO} />
                 <meta property="article:modified_time" content={modified_atISO} />
@@ -132,9 +132,7 @@ function post(props) {
                         .processSync(content).result
                     }
                     <SharePost classes={classes} title={title} url={`https://compilado.xyz${permalink}`} twitter={twitter}/>
-                    <div className={classes.post_tags}>
-                        <Tags category={category} classes={classes}/>
-                    </div>
+                    <Tags category={category} classes={classes}/>
                 </div>
                 ) : ("")}
             </Container>
