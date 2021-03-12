@@ -1,16 +1,16 @@
 import { Fab } from "@material-ui/core"
 import { Facebook, Telegram, Twitter, WhatsApp } from "@material-ui/icons"
 
-export default function ShareButton({ text, url, via, classes, type }) {
+export default function ShareButton({ text, url, twitter, classes, type }) {
     const social = {
         twitter: {
             title: "Twitter",
-            url: `https://twitter.com/intent/tweet?via=${via}&text=${text}&url=${url}`,
+            url: `https://twitter.com/intent/tweet?via=${twitter}&text=${text}&url=${url}`,
             icon: <Twitter/>
         },
         whatsapp: {
             title: "WhatsApp",
-            url: `https://api.whatsapp.com/send?text=${text} por ${via} - ${url}`,
+            url: `https://api.whatsapp.com/send?text=${text} por ${twitter} - ${url}`,
             icon: <WhatsApp/>
         },
         facebook: {

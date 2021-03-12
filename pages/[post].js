@@ -131,7 +131,7 @@ function post(props) {
                         })
                         .processSync(content).result
                     }
-                    <SharePost classes={classes} title={title} canonical={`https://compilado.xyz${permalink}`} twitter={twitter}/>
+                    <SharePost classes={classes} title={title} url={`https://compilado.xyz${permalink}`} twitter={twitter}/>
                     <div className={classes.post_tags}>
                         <Tags category={category} classes={classes}/>
                     </div>
