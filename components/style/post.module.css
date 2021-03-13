@@ -92,3 +92,8 @@ a.button_share {
 p.share_text {
     margin-bottom: 7px;
 }
+
+h5.suggestion_title {
+    margin-top: 48px;
+    margin-bottom: 7px;
+}

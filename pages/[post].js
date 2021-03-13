@@ -5,6 +5,7 @@ import Img from 'next/image'
 import { dateFormat } from "../components/utils"
 import Tags from '../components/posts/tags'
 import SharePost from '../components/share/post'
+import { PostsSugestions } from '../components/posts/suggestions'
 
 const { Container, Typography, Box, Chip, Avatar } = require("@material-ui/core");
 const { default: Copyright } = require("../components/ui/copiryght");
@@ -58,6 +59,8 @@ function post(props) {
         dateISO = dateFormat(date)
         modified_atISO = dateFormat(modified_at)
     }
+
+    const related = JSON.parse(props.related)
 
     return (
         <>
@@ -133,6 +136,7 @@ function post(props) {
                     }
                     <SharePost classes={classes} title={title} url={`https://compilado.xyz${permalink}`} twitter={twitter}/>
                     <Tags category={category} classes={classes}/>
+                    <PostsSugestions classes={classes} related={related}/>
                 </div>
                 ) : ("")}
             </Container>
@@ -152,13 +156,19 @@ export async function getStaticProps({ params }) {
         database : process.env.DB
     });
 
-    const [rows] = await connection.query(`SELECT * FROM posts WHERE permalink = ? LIMIT 1`, [`/${post}`])
+    const [postResult] = await connection.query(`SELECT * FROM posts WHERE permalink = ? LIMIT 1`, [`/${post}`])
+    
+    //TODO: Select related posts based in the category of the original post
+    const [relatedPosts] = await connection.query(`SELECT thumbnail, title, permalink FROM posts ORDER BY RAND() LIMIT 3`)
 
-    if (!rows[0]) return {notFound: true}
+    console.log(relatedPosts)
+
+    if (!postResult[0]) return {notFound: true}
 
     return {
         props: {
-            post: JSON.stringify(rows[0])
+            post: JSON.stringify(postResult[0]),
+            related: JSON.stringify(relatedPosts)
         }
     }
 }
