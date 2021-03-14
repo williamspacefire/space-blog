@@ -7,7 +7,7 @@ import Tags from '../components/posts/tags'
 import SharePost from '../components/share/post'
 import { PostsSugestions } from '../components/posts/suggestions'
 
-const { Container, Typography, Box, Chip, Avatar } = require("@material-ui/core");
+const { Container, Typography, Box, Avatar } = require("@material-ui/core");
 const { default: Copyright } = require("../components/ui/copiryght");
 const { default: Header } = require("../components/ui/header");
 const remarkParse = require('remark-parse')
@@ -160,8 +160,6 @@ export async function getStaticProps({ params }) {
     
     //TODO: Select related posts based in the category of the original post
     const [relatedPosts] = await connection.query(`SELECT thumbnail, title, permalink FROM posts ORDER BY RAND() LIMIT 3`)
-
-    console.log(relatedPosts)
 
     if (!postResult[0]) return {notFound: true}
 
